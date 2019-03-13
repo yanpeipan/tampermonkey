@@ -5,6 +5,7 @@
 // @namespace    http://tampermonkey.net/
 // @description  豆瓣增强脚本
 // @author       yanpeipan(yanpeipan_82@qq.com)
+// @license      https://opensource.org/licenses/MIT
 // @connect      *
 // @connect      api.douban.com
 // @connect      m.imdb.com

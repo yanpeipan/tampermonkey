@@ -1,11 +1,9 @@
 // ==UserScript==
 // @id
 // @name         豆瓣酱紫
-// @icon         https://movie.douban.com/favicon.ico
 // @namespace    http://tampermonkey.net/
 // @description  豆瓣增强脚本
 // @author       yanpeipan(yanpeipan_82@qq.com)
-// @license      https://opensource.org/licenses/MIT
 // @connect      *
 // @connect      api.douban.com
 // @connect      m.imdb.com
@@ -19,13 +17,14 @@
 // @grant        GM_deleteValue
 // @grant        GM_listValues
 // @require      https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js
+// @require      https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js
 // @include      https://movie.douban.com/
 // @match        https://movie.douban.com/*
 // @exclude      https://*/follows_comments*
 // @exclude      http*://*collections?show_followings=on
-// @version      1.1
+// @version      20190315
 // @run-at       document-start
-// @namespace    JS_YAN
+// @namespace      exhen_js
 
 // ==/UserScript==
 
@@ -346,18 +345,17 @@ background: black;
         var video = {delay: 1200};
         $('.wide_videos a').hover(function() {
             video.hover = true;
+            if (!video.div) {
+                video.div = true
+                $('body').prepend('<div class="modal" style="display:none;"><video id="player-html5-242330" class="video-js vjs-douban player" controls="controls" autoplay="autoplay"></video></div>')
+            }
             var url = $(this).attr('href')
-            if (url != video.url) {
-                video.url = url
+            video.url = url
                 GM_Request({url: url, success: function(res) {
                     if (!video.hover) {
                         return false;
                     }
                     video.timeout = setTimeout(function() {
-                        if (!video.div) {
-                            video.div = true
-                            $('body').prepend('<div class="modal" style="display:none;"><video id="player-html5-242330" class="video-js vjs-douban player" controls="controls" autoplay="autoplay"></video></div>')
-                        }
                         var doc = $.parseHTML(res)
                         video.src = $('source', doc).attr('src')
                         $('#player-html5-242330').html('<source src="'+ video.src +'" title="" type="video/mp4">')
@@ -366,16 +364,11 @@ background: black;
                         }).trigger('load')
                     }, video.delay)
                 }})
-            } else {
-                video.timeout = setTimeout(function() {
-                    $('video').trigger('play');
-                }, video.delay)
-            }
         }, function() {
             video.hover = false;
             clearTimeout(video.timeout);
         })
-        $(document).click(function(e){
+        $(document).click(function(e) {
             var popup = $(".modal");
             //判断事件对象不是弹窗对象  并且  弹窗对象不包含事件对象
             if (!popup.is(e.target) && popup.has(e.target).length == 0) {

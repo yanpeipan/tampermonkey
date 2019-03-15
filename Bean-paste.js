@@ -1,9 +1,11 @@
 // ==UserScript==
 // @id
 // @name         豆瓣酱紫
+// @icon         https://movie.douban.com/favicon.ico
 // @namespace    http://tampermonkey.net/
 // @description  豆瓣增强脚本
 // @author       yanpeipan(yanpeipan_82@qq.com)
+// @license      https://opensource.org/licenses/MIT
 // @connect      *
 // @connect      api.douban.com
 // @connect      m.imdb.com
@@ -17,15 +19,15 @@
 // @grant        GM_deleteValue
 // @grant        GM_listValues
 // @require      https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js
-// @require      https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js
 // @include      https://movie.douban.com/
 // @match        https://movie.douban.com/*
 // @exclude      https://*/follows_comments*
 // @exclude      http*://*collections?show_followings=on
-// @version      20190315
+// @version      1.2
 // @run-at       document-start
-// @namespace      exhen_js
+// @namespace    JS_YAN
 
+// @downloadURL none
 // ==/UserScript==
 
 (function() {
@@ -345,30 +347,30 @@ background: black;
         var video = {delay: 1200};
         $('.wide_videos a').hover(function() {
             video.hover = true;
-            if (!video.div) {
-                video.div = true
-                $('body').prepend('<div class="modal" style="display:none;"><video id="player-html5-242330" class="video-js vjs-douban player" controls="controls" autoplay="autoplay"></video></div>')
-            }
             var url = $(this).attr('href')
             video.url = url
-                GM_Request({url: url, success: function(res) {
-                    if (!video.hover) {
-                        return false;
+            GM_Request({url: url, success: function(res) {
+                if (!video.hover) {
+                    return false;
+                }
+                video.timeout = setTimeout(function() {
+                    if (!video.div) {
+                        video.div = true
+                        $('body').prepend('<div class="modal" style="display:none;"><video id="player-html5-242330" class="video-js vjs-douban player" controls="controls" autoplay="autoplay"></video></div>')
                     }
-                    video.timeout = setTimeout(function() {
-                        var doc = $.parseHTML(res)
-                        video.src = $('source', doc).attr('src')
-                        $('#player-html5-242330').html('<source src="'+ video.src +'" title="" type="video/mp4">')
-                        $('video').on('play', function() {
-                            $(".modal").delay(500).show()
-                        }).trigger('load')
-                    }, video.delay)
-                }})
+                    var doc = $.parseHTML(res)
+                    video.src = $('source', doc).attr('src')
+                    $('#player-html5-242330').html('<source src="'+ video.src +'" title="" type="video/mp4">')
+                    $('video').on('play', function() {
+                        $(".modal").delay(500).show()
+                    }).trigger('load')
+                }, video.delay)
+            }})
         }, function() {
             video.hover = false;
             clearTimeout(video.timeout);
         })
-        $(document).click(function(e) {
+        $(document).click(function(e){
             var popup = $(".modal");
             //判断事件对象不是弹窗对象  并且  弹窗对象不包含事件对象
             if (!popup.is(e.target) && popup.has(e.target).length == 0) {

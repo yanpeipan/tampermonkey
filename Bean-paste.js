@@ -11,6 +11,7 @@
 // @connect      m.imdb.com
 // @connect      www.omdbapi.com
 // @connect      www.zhihu.com
+// @connect      movie.yanpeipan.cn
 // @grant        GM_xmlhttpRequest
 // @grant        GM_setClipboard
 // @grant        GM_addStyle
@@ -23,7 +24,7 @@
 // @match        https://movie.douban.com/*
 // @exclude      https://*/follows_comments*
 // @exclude      http*://*collections?show_followings=on
-// @version      1.4
+// @version      1.5
 // @run-at       document-start
 // @namespace    JS_YAN
 

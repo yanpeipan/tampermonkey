@@ -23,7 +23,7 @@
 // @match        https://movie.douban.com/*
 // @exclude      https://*/follows_comments*
 // @exclude      http*://*collections?show_followings=on
-// @version      1.2
+// @version      1.3
 // @run-at       document-start
 // @namespace    JS_YAN
 

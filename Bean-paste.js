@@ -1,29 +1,30 @@
 // ==UserScript==
 // @id
-// @name         豆瓣酱
-// @name_en      douban bro
-// @icon         https://movie.douban.com/favicon.ico
-// @namespace    http://tampermonkey.net/
-// @description  豆瓣电影增强脚本
-// @description_en  Douban movie enhanced script
-// @author       yanpeipan(yanpeipan_82@qq.com)
-// @license      https://opensource.org/licenses/MIT
-// @connect      *
-// @grant        GM_xmlhttpRequest
-// @grant        GM_setClipboard
-// @grant        GM_addStyle
-// @grant        GM_setValue
-// @grant        GM_getValue
-// @grant        GM_deleteValue
-// @grant        GM_listValues
-// @require      https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js
-// @include      https://movie.douban.com/
-// @match        https://movie.douban.com/*
-// @exclude      https://*/follows_comments*
-// @exclude      http*://*collections?show_followings=on
-// @version      1.6
-// @run-at       document-start
-// @namespace    JS_YAN
+// @name               豆瓣酱
+// @name:en-US         douban bro
+// @icon               https://movie.douban.com/favicon.ico
+// @namespace          http://tampermonkey.net/
+// @description        豆瓣电影增强脚本
+// @description:en-US  Douban movie enhanced script
+// @author             yanpeipan(yanpeipan_82@qq.com)
+// @license            https://opensource.org/licenses/MIT
+// @connect            *
+// @grant              GM_xmlhttpRequest
+// @grant              GM_setClipboard
+// @grant              GM_addStyle
+// @grant              GM_setValue
+// @grant              GM_getValue
+// @grant              GM_deleteValue
+// @grant              GM_listValues
+// @require            https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js
+// @include            https://movie.douban.com/
+// @match              https://movie.douban.com/*
+// @exclude            https://*/follows_comments*
+// @exclude            http*://*collections?show_followings=on
+// @version            1.7
+// @run-at             document-start
+// @namespace          0rez.naY
+// @updateURL          https://raw.githubusercontent.com/yanpeipan/tampermonkey/master/Bean-paste.js
 
 // ==/UserScript==
 

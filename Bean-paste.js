@@ -1,17 +1,14 @@
 // ==UserScript==
 // @id
-// @name         豆瓣酱紫
+// @name         豆瓣酱
+// @name_en      douban bro
 // @icon         https://movie.douban.com/favicon.ico
 // @namespace    http://tampermonkey.net/
-// @description  豆瓣增强脚本
+// @description  豆瓣电影增强脚本
+// @description_en  Douban movie enhanced script
 // @author       yanpeipan(yanpeipan_82@qq.com)
 // @license      https://opensource.org/licenses/MIT
 // @connect      *
-// @connect      api.douban.com
-// @connect      m.imdb.com
-// @connect      www.omdbapi.com
-// @connect      www.zhihu.com
-// @connect      movie.yanpeipan.cn
 // @grant        GM_xmlhttpRequest
 // @grant        GM_setClipboard
 // @grant        GM_addStyle
@@ -24,7 +21,7 @@
 // @match        https://movie.douban.com/*
 // @exclude      https://*/follows_comments*
 // @exclude      http*://*collections?show_followings=on
-// @version      1.5
+// @version      1.6
 // @run-at       document-start
 // @namespace    JS_YAN
 
@@ -104,6 +101,7 @@ background: black;
     let $ = window.jQuery;
     let GM_Request = function(params) {
         GM_xmlhttpRequest({
+            synchronous: false,
             timeout: 10000,
             method: params.method ? params.method : 'GET',
             url: params.url,

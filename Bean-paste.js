@@ -1,6 +1,7 @@
 // ==UserScript==
 // @id
 // @name               豆瓣酱
+// @name:zh-CN         豆瓣酱
 // @name:en-US         douban bro
 // @icon               https://movie.douban.com/favicon.ico
 // @namespace          http://tampermonkey.net/
@@ -21,10 +22,9 @@
 // @match              https://movie.douban.com/*
 // @exclude            https://*/follows_comments*
 // @exclude            http*://*collections?show_followings=on
-// @version            1.7
+// @version            1.8
 // @run-at             document-start
 // @namespace          0rez.naY
-// @updateURL          https://raw.githubusercontent.com/yanpeipan/tampermonkey/master/Bean-paste.js
 
 // ==/UserScript==
 
